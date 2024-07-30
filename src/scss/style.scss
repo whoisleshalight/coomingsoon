@@ -199,6 +199,8 @@ body {
 		img {
 			width: toRem(400);
 			object-fit: contain;
+			@include adaptiveValue("width", 400, 300, 0, 3840, 1920);
+
 		}
 	}
 
@@ -235,14 +237,15 @@ body {
 		animation: shine 18s linear infinite;
 		font-size: toRem(120);
 
-		@media (min-width:toEm(1440)) {
-			font-size: toRem(70);
-		}
+		// @media (min-width:toEm(1440)) {
+		// 	font-size: toRem(70);
+		// }
 
-		@media (min-width:toEm(2034)) {
-			font-size: toRem(120);
+		// @media (min-width:toEm(2034)) {
+		// 	font-size: toRem(120);
 
-		}
+		// }
+		@include adaptiveValue("font-size", 120, 70, 0, 3840, 1920);
 
 		@keyframes shine {
 			from {
@@ -256,19 +259,14 @@ body {
 
 		span {
 			font-size: toRem(14);
+
 			font-weight: 600;
 		}
 	}
 
 	&__timer {
-		@media (min-width:toEm(1440)) {
-			font-size: toRem(30);
-		}
+		@include adaptiveValue("font-size", 40, 28, 0, 3840, 1920);
 
-		@media (min-width:toEm(2034)) {
-			font-size: toRem(40);
-
-		}
 	}
 }
 
@@ -276,13 +274,12 @@ body {
 
 	&__uptitle {
 		font-weight: 600;
-		font-size: toRem(60);
-
+		@include adaptiveValue("font-size", 60, 40, 0, 3840, 1920);
 	}
 
 	&__title {
 		font-weight: 700;
-		font-size: toRem(120);
+		@include adaptiveValue("font-size", 120, 66, 0, 3840, 1920);
 
 
 	}
@@ -292,6 +289,7 @@ body {
 		font-weight: 800;
 		display: inline-block;
 		transition: all 0.4s;
+		@include adaptiveValue("font-size", 130, 76, 0, 3840, 1920);
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -316,10 +314,10 @@ body {
 	&__counter {
 		position: relative;
 		z-index: 2;
-		font-size: toRem(60);
 		font-weight: 800;
 		color: #fff;
 		transition: all 0.4s;
+		@include adaptiveValue("font-size", 100, 60, 0, 3840, 1920);
 	}
 
 	img {
@@ -347,28 +345,23 @@ body {
 
 	.graphic-main {
 
-		// flex: 0 0 60%;
-
-
-		border-top-left-radius: toRem(80);
-		border-bottom-left-radius: toRem(80);
+		@media (min-width:toEm(1199.98)) {
+			@include adaptiveValue("width", 691, 460, 0, 1440, 1199.98);
+			border-top-left-radius: 3rem;
+			border-bottom-left-radius: 3rem;
+		}
 
 		@media (min-width:toEm(1440)) {
-			width: 60%;
-		}
-
-		@media (min-width:toEm(2034)) {
-			width: 40vw;
+			@include adaptiveValue("width", 1152, 691, 0, 1920, 1440);
 
 		}
 
-		@media (min-width:toEm(2500)) {
-			width: 50vw;
-		}
-
-		@media (min-width:toEm(3100)) {
+		@media (min-width:toEm(1920)) {
 			width: 60vw;
+			border-top-left-radius: toRem(80);
+			border-bottom-left-radius: toRem(80);
 		}
+
 	}
 
 	img {

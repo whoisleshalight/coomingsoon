@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Cooming soon..</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20240730183126">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="page">
+			<section class="page__main main">
+				<div class="main__body">
+					<a href="willcreative.com" target="_blank" class="main__logo"><img src="img/logo.svg" alt="Logo"></a>
+					<div class="main__info info-main">
+						<h1 class="info-main__title">
+							<span>2024 © all rights reserved</span>
+							COOMING SOON...
+						</h1>
+						<div id="timer" class="info-main__timer">10d : 20h : 05m : 33s</div>
+					</div>
+					<div class="main__contacts contacts-main">
+						<h2 class="contacts-main__uptitle">Contact Us</h2>
+						<h3 class="contacts-main__title">Let’s talk</h3>
+						<a href="info@brand.com" class="contacts-main__email">info@brand.com</a>
+					</div>
+				</div>
+				<div class="main__graphic graphic-main">
+					<!-- <div class="graphic-main__counter">100%</div> -->
+					<img src="img/bg.svg" alt="Image">
+				</div>
+			</section>
+		</main>
+	</div>
+	<script src="js/app.min.js?_v=20240730183126"></script>
+	<script>
+		function preloader() {
+			const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+			// const preloaderContainer = document.querySelector('#fls-preloader');
+			if (preloaderImages.length) {
+				const preloaderTemplate = `
+						<div class="graphic-main__counter">0%</div>
+						`;
+				document.querySelector('.graphic-main').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+				const
+					// preloader = document.querySelector('.fls-preloader'),
+					showPecentLoad = document.querySelector('.graphic-main__counter'),
+					htmlDocument = document.documentElement;
+
+				let imagesLoadedCount = counter = progress = 0;
+
+				htmlDocument.classList.add('loading');
+				htmlDocument.classList.add('lock');
+
+				preloaderImages.forEach(preloaderImage => {
+					const imgClone = document.createElement('img');
+					if (imgClone) {
+						imgClone.onload = imageLoaded;
+						imgClone.onerror = imageLoaded;
+						preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+					}
+				});
+
+				function setValueProgress(progress) {
+					showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+
+				}
+				showPecentLoad ? setValueProgress(progress) : null;
+
+				function imageLoaded() {
+					imagesLoadedCount++;
+					progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+					const intervalId = setInterval(() => {
+						counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+						counter >= 100 ? addLoadedClass() : null;
+					}, 10);
+				}
+
+				function addLoadedClass() {
+					showPecentLoad.classList.add('_done');
+					setTimeout(() => {
+						htmlDocument.classList.add('loaded');
+					}, 100);
+					htmlDocument.classList.remove('lock');
+					htmlDocument.classList.remove('loading');
+
+				}
+			}
+		}
+		preloader();
+	</script>
+</body>
+
+</html>
